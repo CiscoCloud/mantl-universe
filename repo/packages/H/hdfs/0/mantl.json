@@ -1,8 +1,0 @@
-{
-  "hdfs": {
-    "scheduler-uris": [
-      "https://s3-us-west-1.amazonaws.com/dcos-downloads.aster.is/hdfs-mesos-0.1.3.tgz",
-      "https://downloads.mesosphere.io/java/jre-7u76-linux-x64.tar.gz"
-    ]
-  }
-}

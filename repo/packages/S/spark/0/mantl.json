@@ -1,8 +1,0 @@
-{
-  "mesos": {
-    "master": "mesos://zk://zookeeper.service.consul:2181/mesos"
-  },
-  "spark": {
-    "zookeeper": "zookeeper.service.consul:2181"
-  }
-}
