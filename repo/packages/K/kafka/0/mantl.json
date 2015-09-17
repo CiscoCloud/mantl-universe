@@ -6,6 +6,8 @@
     "zk": "zookeeper.service.consul:2181",
     "app": {
       "jar": "https://d1vubr0evspla.cloudfront.net/kafka-mesos-0.9.1.1.jar"
-    }
+    },
+    "principal": "{{mantl-install-mesos-principal}}",
+    "secret": "{{mantl-install-mesos-secret}}"
   }
 }
