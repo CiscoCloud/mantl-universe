@@ -8,15 +8,9 @@
     "framework": {
       "authentication": {
         "enabled": true,
-        "principal": "{{mantl-install-mesos-principal}}",
-        "secret": "{{mantl-install-mesos-secret}}"
+        "principal": "{{mantl.mesos.principal}}",
+        "secret": "{{mantl.mesos.secret}}"
       }
-    }
-  },
-  "framework": {
-    "authentication": {
-      "principal": "{{mantl-install-mesos-principal}}",
-      "secret": "{{mantl-install-mesos-secret}}"
     }
   }
 }
