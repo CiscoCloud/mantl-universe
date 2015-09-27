@@ -1,0 +1,9 @@
+{
+  "hdfs": {
+    "scheduler-uris": [
+      "https://dl.bintray.com/asteris/mantl-install-packages/hdfs-mesos-0.1.4.tgz",
+      "https://downloads.mesosphere.io/java/jre-7u76-linux-x64.tar.gz"
+    ],
+    "ld-library-path": "/usr/local/lib"
+  }
+}
