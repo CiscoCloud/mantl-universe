@@ -1,0 +1,14 @@
+{
+  "zookeeper": {
+    "delete": [
+      {
+        "path": "/hdfs-mesos",
+        "always": true
+      },
+      {
+        "path": "/hadoop-ha/hdfs",
+        "always": true
+      }
+    ]
+  }
+}
