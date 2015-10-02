@@ -1,0 +1,10 @@
+{
+  "riak": {
+    "master": "zk://zookeeper.service.consul:2181/mesos",
+    "zk": "zookeeper.service.consul:2181",
+    "url": "http://riak-tools.s3.amazonaws.com/riak-mesos/centos/riak_mesos_linux_amd64_0.1.1.tar.gz",
+    "auth-principal": "{{mantl.mesos.principal}}",
+    "auth-secret-file": "/etc/mesos/{{mantl.mesos.principal}}",
+    "framework-name": "riak"
+  }
+}
