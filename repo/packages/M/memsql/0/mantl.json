@@ -1,0 +1,15 @@
+{
+  "mesos": {
+    "master": "leader.mesos.service.consul:15050"
+  },
+  "memsql": {
+    "zk": "zookeeper.service.consul:2181/memsql",
+    "framework": {
+      "authentication": {
+        "enabled": true,
+        "principal": "{{mantl.mesos.principal}}",
+        "secret": "{{mantl.mesos.secret}}"
+      }
+    }
+  }
+}
