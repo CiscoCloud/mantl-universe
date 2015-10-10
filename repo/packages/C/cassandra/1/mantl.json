@@ -3,8 +3,8 @@
     "master": "zk://zookeeper.service.consul:2181/mesos"
   },
   "cassandra": {
-    "cluster-name": "dcos-test",
-    "zk": "zk://zookeeper.service.consul:2181/cassandra-mesos/dcos-test",
+    "cluster-name": "mantl",
+    "zk": "zk://zookeeper.service.consul:2181/cassandra-mesos/mantl",
     "framework": {
       "authentication": {
         "enabled": true,
