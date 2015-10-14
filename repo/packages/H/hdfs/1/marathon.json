@@ -5,9 +5,9 @@
   "disk": 100,
   "instances": 1,
   "env": {
-    "LD_LIBRARY_PATH": "{{hdfs.ld-library-path}}",
+    "LD_LIBRARY_PATH": "{{hdfs.ld-library-path}}"{{#mantl.mesos.authentication-enabled}},
     "DEFAULT_PRINCIPAL": "{{mantl.mesos.principal}}",
-    "DEFAULT_SECRET": "{{mantl.mesos.secret}}"
+    "DEFAULT_SECRET": "{{mantl.mesos.secret}}"{{/mantl.mesos.authentication-enabled}}
   },
   "cmd": "export JAVA_HOME=$MESOS_DIRECTORY/{{hdfs.jre-version}} && {{#hdfs.custom-config}}echo {{hdfs.custom-config}} | base64 --decode > mesos-site.xml && {{/hdfs.custom-config}}cd {{hdfs.framework-version}} && if [ -e '../mesos-site.xml' ]; then cp -f ../mesos-site.xml ./etc/hadoop/; fi && ./etc/hadoop/auth-config.sh ./etc/hadoop/mesos-site.xml && ./bin/hdfs-mesos",
   "uris": {{{hdfs.scheduler-uris}}},

@@ -6,7 +6,7 @@
     "zk": "zookeeper.service.consul:2181/memsql",
     "framework": {
       "authentication": {
-        "enabled": true,
+        "enabled": {{mantl.mesos.authentication-enabled}},
         "principal": "{{mantl.mesos.principal}}",
         "secret": "{{mantl.mesos.secret}}"
       }

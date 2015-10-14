@@ -7,7 +7,7 @@
     "zk": "zk://zookeeper.service.consul:2181/cassandra-mesos/mantl",
     "framework": {
       "authentication": {
-        "enabled": true,
+        "enabled": {{mantl.mesos.authentication-enabled}},
         "principal": "{{mantl.mesos.principal}}",
         "secret": "{{mantl.mesos.secret}}"
       }
