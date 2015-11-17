@@ -1,0 +1,14 @@
+{
+  "zookeeper": {
+    "delete": [
+      {
+        "path": "/elasticsearch/{{ elasticsearch.executor.cluster-name }}",
+        "always": true
+      },
+      {
+        "path": "/es/clusters/{{ elasticsearch.executor.cluster-name }}",
+        "always": true
+      }
+    ]
+  }
+}
