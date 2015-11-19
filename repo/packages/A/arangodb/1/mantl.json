@@ -4,7 +4,7 @@
   },
   "arangodb": {
     "id": "arangodb",
-    "zk": "zk://zookeeper.service.consul:2181/arangodb"
+    "zk": "zk://zookeeper.service.consul:2181/arangodb",
     "volume-path": "/data/arangodb",
     "mesos-authenticate":"{{mantl.mesos.authentication-enabled}}"
     {{#mantl.mesos.authentication-enabled}},
