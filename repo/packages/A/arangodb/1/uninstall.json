@@ -2,7 +2,7 @@
   "zookeeper": {
     "delete": [
       {
-        "path": "/arangodb",
+        "path": "/arangodb/{{arangodb.id}}",
 	"always": true
       }
     ]

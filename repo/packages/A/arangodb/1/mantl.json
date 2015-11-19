@@ -8,6 +8,6 @@
     "mesos-authenticate":"{{mantl.mesos.authentication-enabled}}"
     {{#mantl.mesos.authentication-enabled}},
     "principal":"{{mantl.mesos.principal}}",
-    "secret": "{{mantl.mesos.secret}}"{{/mant.mesos.authentication-enabled}}
+    "secret": "{{mantl.mesos.secret}}"{{/mantl.mesos.authentication-enabled}}
   }
 }
