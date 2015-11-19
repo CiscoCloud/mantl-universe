@@ -2,7 +2,7 @@
   "zookeeper": {
     "delete": [
       {
-        "path": "/arrangodb",
+        "path": "/arangodb",
 	"always": true
       }
     ]
