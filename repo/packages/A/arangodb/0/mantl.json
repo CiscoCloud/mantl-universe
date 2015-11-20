@@ -1,9 +1,0 @@
-{
-  "mesos": {
-    "master": "zk://zookeeper.service.consul:2181/mesos"
-  },
-  "arangodb": {
-    "id": "arangodb",
-    "zk": "zk://zookeeper.service.consul:2181/arangodb"
-  }
-}
