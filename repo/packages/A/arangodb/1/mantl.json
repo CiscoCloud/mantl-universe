@@ -1,0 +1,11 @@
+{
+  "mesos": {
+    "master": "zk://zookeeper.service.consul:2181/mesos"
+  },
+  "arangodb": {
+    "zk": "zk://zookeeper.service.consul:2181/arangodb",
+    "mesos-authenticate":"{{mantl.mesos.authentication-enabled}}"{{#mantl.mesos.authentication-enabled}},
+    "principal":"{{mantl.mesos.principal}}",
+    "secret": "{{mantl.mesos.secret}}"{{/mantl.mesos.authentication-enabled}}
+  }
+}

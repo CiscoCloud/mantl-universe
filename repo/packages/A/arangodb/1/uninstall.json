@@ -1,0 +1,10 @@
+{
+  "zookeeper": {
+    "delete": [
+      {
+        "path": "/arangodb/{{arangodb.id}}",
+        "always": true
+      }
+    ]
+  }
+}
