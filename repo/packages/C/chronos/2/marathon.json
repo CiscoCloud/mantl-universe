@@ -21,7 +21,14 @@
     "docker": {
       "image": "mesosphere/chronos:chronos-2.4.0-0.1.20150828104228.ubuntu1404-mesos-0.23.0-1.0.ubuntu1404",
       "network": "HOST"
-    }
+    }{{#mantl.mesos.authentication-enabled}},
+    "volumes": [
+      {
+        "containerPath": "/etc/mesos/{{mantl.mesos.principal}}",
+        "hostPath": "/etc/mesos/{{mantl.mesos.principal}}",
+        "mode": "RO"
+      }
+    ]{{/mantl.mesos.authentication-enabled}}
   },
   "healthChecks": [
     {
