@@ -119,7 +119,7 @@
       "hostname": {
         "description": "The advertised hostname stored in ZooKeeper so another standby host can redirect to this elected leader (default = localhost)",
         "type": "string",
-        "default": "$HOST"
+        "default": "$HOSTNAME"
       },
       "http-credentials": {
         "description": "Credentials for accessing the http service. If empty, anyone can access the HTTP endpoint. A username:password pair is expected where the username must not contain ':'. ",

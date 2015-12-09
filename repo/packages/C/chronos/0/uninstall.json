@@ -1,0 +1,10 @@
+{
+  "zookeeper": {
+    "delete": [
+      {
+        "path": "/chronos",
+        "always": true
+      }
+    ]
+  }
+}
