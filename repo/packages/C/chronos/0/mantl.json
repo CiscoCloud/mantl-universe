@@ -1,11 +1,5 @@
 {
   "mesos": {
     "master": "zk://zookeeper.service.consul:2181/mesos"
-  },
-  "chronos": {
-    "zk-hosts": {
-      "default": "zk://zookeeper.service.consul:2181/chronos"
-    },
-
   }
 }
