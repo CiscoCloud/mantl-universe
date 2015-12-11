@@ -3,6 +3,7 @@
     "master": "zk://zookeeper.service.consul:2181/mesos"
   },
   "chronos": {
-    "zk-hosts": "zk://zookeeper.service.consul:2181/chronos"
+    "zk-hosts": "zk://zookeeper.service.consul:2181/chronos",
+    "cassandra-ttl": 5000
   }
 }
