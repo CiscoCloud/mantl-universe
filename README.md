@@ -1,6 +1,6 @@
 # mantl-universe
 
-The Mantl Universe package repository - install DCOS packages on [Mantl](https://github.com/CiscoCloud/microservices-infrastructure)
+The Mantl Universe package repository - install DCOS packages on [Mantl](https://github.com/CiscoCloud/microservices-infrastructure) with [Mantl API](https://github.com/CiscoCloud/mantl-api/).
 
 ## Packages
 
@@ -13,7 +13,7 @@ The goals of the packaging system are:
 
 ### Package Structure
 
-Mantl API packages are based on the [DCOS packaging format](https://github.com/mesosphere/universe/#organization) from Mesosphere.
+Mantl Universe packages are based on the [DCOS packaging format](https://github.com/mesosphere/universe/#organization) from Mesosphere. Packages in Mantl Universe are intended to be installed with [Mantl API](https://github.com/CiscoCloud/mantl-api/) and may depend on the corresponding package version in the [Mesosphere Universe](https://github.com/mesosphere/universe/). For details on how Mantl API installs packages, you can review the [Mantl API README](https://github.com/CiscoCloud/mantl-api/blob/master/README.md).
 
 Each package is made up of several json files:
 
