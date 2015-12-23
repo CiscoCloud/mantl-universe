@@ -1,0 +1,10 @@
+{
+  "zookeeper": {
+    "delete": [
+      {
+        "path": "/cassandra-mesos/{{cassandra.cluster-name}}",
+        "always": true
+      }
+    ]
+  }
+}
