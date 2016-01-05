@@ -6,8 +6,13 @@
       "network": "BRIDGE",
       "portMappings": [
         {
-          "containerPort": 5601,
-          "hostPort": 0,
+          "containerPort": 9200,
+          "hostPort": 9200,
+          "protocol": "tcp"
+        },
+        {
+          "containerPort": 9300,
+          "hostPort": 9300,
           "protocol": "tcp"
         }
       ]

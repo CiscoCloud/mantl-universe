@@ -1,12 +1,12 @@
 {
   "es-proxy": {
     "image": {
-      "default": "corebug/haproxy-consul",
+      "default": "ciscocloud/haproxy-consul",
       "description": "haproxy-consul Docker image name",
       "type": "string"
     },
     "version": {
-      "default": "0.2-es",
+      "default": "0.2-elk",
       "description": "haproxy-consul Docker image tag",
       "type": "string"
     },

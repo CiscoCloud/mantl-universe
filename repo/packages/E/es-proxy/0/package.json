@@ -2,7 +2,7 @@
   "name": "es-proxy",
   "version": "0.2",
   "tags": ["mantl", "mesos", "framework", "elasticsearch", "elastic", "proxy"],
-  "framework": true,
+  "framework": false,
   "maintainer": "corebug@corebug.net",
   "description": "ElasticSearch-specific haproxy-consul package",
   "scm": "https://github.com/CiscoCloud/haproxy-consul.git",
