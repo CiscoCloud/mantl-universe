@@ -37,7 +37,7 @@
     "--executorName", "{{elasticsearch.executor.name}}",
     "--executorTimeout", "{{elasticsearch.executor.timeout}}"{{#mantl.mesos.authentication-enabled}},
     "--frameworkPrincipal", "{{mantl.mesos.principal}}",
-    "--frameworkSecretPath", "/etc/mesos/{{mantl.mesos.principal}}"{{/mantl.mesos.authentication-enabled}}
+    "--frameworkSecretPath", "{{mantl.mesos.secret-path}}"{{/mantl.mesos.authentication-enabled}}
   ],
   "env": {
     "JAVA_OPTS": "{{elasticsearch.scheduler.java-heap}}"
