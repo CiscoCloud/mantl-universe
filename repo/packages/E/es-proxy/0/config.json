@@ -6,7 +6,7 @@
       "type": "string"
     },
     "version": {
-      "default": "0.2-elk",
+      "default": "latest",
       "description": "haproxy-consul Docker image tag",
       "type": "string"
     },
