@@ -19,7 +19,7 @@
     }
   },
   "env": {
-    "ELASTICSEARCH_URL": "{{ es-proxy.es_url }}"
+    "ELASTICSEARCH_EXECUTOR_NAME": "{{ es-proxy.es_executor_name }}"
   },
   "healthChecks": [{
     "protocol": "HTTP",
