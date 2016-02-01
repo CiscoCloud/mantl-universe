@@ -6,5 +6,8 @@
     "executor": {
       "cluster-name": "mantl"
     }
+  },
+  "mantl": {
+    "load-balancer": "external"
   }
 }

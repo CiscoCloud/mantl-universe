@@ -11,5 +11,8 @@
         "secret": "{{mantl.mesos.secret}}"
       }
     }
+  },
+  "mantl": {
+    "load-balancer": "external"
   }
 }

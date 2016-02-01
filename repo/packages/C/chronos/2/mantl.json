@@ -4,5 +4,8 @@
   },
   "chronos": {
     "zk-hosts": "zookeeper.service.consul:2181"
+  },
+  "mantl": {
+    "load-balancer": "external"
   }
 }
