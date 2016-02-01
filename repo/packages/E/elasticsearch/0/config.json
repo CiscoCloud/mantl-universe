@@ -27,16 +27,6 @@
           "description":"The time before Mesos kills a scheduler and tasks if it has not recovered (ms).",
           "type":"string"
         },
-        "zookeeper-framework-url":{
-          "default":"DEFAULT",
-          "description":"Zookeeper urls for the framework in the format zk://IP:PORT,IP:PORT,...)",
-          "type":"string"
-        },
-        "zookeeper-framework-timeout":{
-          "default":"20000",
-          "description":"The timeout for connecting to zookeeper for the framework (ms).",
-          "type":"string"
-        },
         "zookeeper-mesos-timeout":{
           "default":"20000",
           "description":"The timeout for connecting to zookeeper for Mesos (ms).",
@@ -90,7 +80,7 @@
               "type":"string"
             },
             "image":{
-              "default":"mesos/elasticsearch-executor:0.5.2",
+              "default":"mesos/elasticsearch-executor:0.7.0",
               "description":"The docker executor image to use.",
               "type":"string"
             },
@@ -102,6 +92,11 @@
             "timeout":{
               "default":"60000",
               "description":"The maximum executor healthcheck timeout (ms). Must be greater than elasticsearch.executor.healthdelay. Will start new executor after this length of time.",
+              "type":"string"
+            },
+            "data-directory": {
+              "default": "/var/lib/mesos/slave/elasticsearch",
+              "description": "The data directory used by Docker volumes in the executors.",
               "type":"string"
             }
           },
@@ -132,7 +127,7 @@
               "type":"string"
             },
             "image":{
-              "default":"mesos/elasticsearch-scheduler:0.5.2",
+              "default":"mesos/elasticsearch-scheduler:0.7.0",
               "description":"The docker scheduler image to use.",
               "type":"string"
             },
@@ -160,8 +155,6 @@
       "required":[
         "framework-name",
         "failover-timeout",
-        "zookeeper-framework-url",
-        "zookeeper-framework-timeout",
         "zookeeper-mesos-timeout",
         "port",
         "force-pull-image",

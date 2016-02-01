@@ -16,14 +16,12 @@
     }
   ],
   "args": [
+    "--dataDir", "{{elasticsearch.executor.data-directory}}",
     "--zookeeperMesosUrl", "{{mesos.master}}",
     "--zookeeperMesosTimeout", "{{elasticsearch.zookeeper-mesos-timeout}}",
-    "--zookeeperFrameworkUrl", "{{elasticsearch.zookeeper-framework-url}}",
-    "--zookeeperFrameworkTimeout", "{{elasticsearch.zookeeper-framework-timeout}}",
     "--webUiPort", "{{elasticsearch.port}}",
     "--frameworkFailoverTimeout", "{{elasticsearch.failover-timeout}}",
     "--frameworkName", "{{elasticsearch.framework-name}}",
-
     "--elasticsearchNodes", "{{elasticsearch.executor.instances}}",
     "--elasticsearchClusterName", "{{elasticsearch.executor.cluster-name}}",
     "--elasticsearchCpu", "{{elasticsearch.executor.cpu}}",
@@ -37,7 +35,7 @@
     "--executorName", "{{elasticsearch.executor.name}}",
     "--executorTimeout", "{{elasticsearch.executor.timeout}}"{{#mantl.mesos.authentication-enabled}},
     "--frameworkPrincipal", "{{mantl.mesos.principal}}",
-    "--frameworkSecretPath", "{{mantl.mesos.secret-path}}"{{/mantl.mesos.authentication-enabled}}
+    "--frameworkSecretPath", "/etc/mesos/{{mantl.mesos.principal}}"{{/mantl.mesos.authentication-enabled}}
   ],
   "env": {
     "JAVA_OPTS": "{{elasticsearch.scheduler.java-heap}}"
@@ -52,7 +50,7 @@
     "volumes": [
       {
         "containerPath": "/etc/mesos/{{mantl.mesos.principal}}",
-        "hostPath": "/etc/mesos/{{mantl.mesos.principal}}",
+        "hostPath": "{{mantl.mesos.secret-path}}",
         "mode": "RO"
       }
     ]{{/mantl.mesos.authentication-enabled}}
