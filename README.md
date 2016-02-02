@@ -2,6 +2,8 @@
 
 The Mantl Universe package repository - install DCOS packages on [Mantl](https://github.com/CiscoCloud/microservices-infrastructure) with [Mantl API](https://github.com/CiscoCloud/mantl-api/).
 
+**As of mantl-api 0.1.4, the default mantl-universe branch is `version-0.6`.**
+
 ## Packages
 
 The goals of the packaging system are:
