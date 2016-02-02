@@ -2,6 +2,8 @@
 
 The Mantl Universe package repository - install DCOS packages on [Mantl](https://github.com/CiscoCloud/microservices-infrastructure) with [Mantl API](https://github.com/CiscoCloud/mantl-api/).
 
+**As of mantl-api 0.1.4, the default mantl-universe branch is `version-0.6`.**
+
 ## Packages
 
 The goals of the packaging system are:
@@ -34,6 +36,18 @@ In Mantl Universe, the `config.json` is optional if the intention is to use the 
 The `mantl.json` overrides configuration defaults from the `config.json` file (either directly in the package or from the `config.json` for the corresponding package version in the Mesosphere universe) with values that are known to work on Mantl.
 
 Also, the presence of the mantl.json dictates whether the package is "supported" on Mantl. It can be empty `{}` if there is no specific changes required to make the package run on Mantl.
+
+`mantl.json` includes a setting that allows you to control how the application is load balanced on Mantl clusters. Currently, it is a simple toggle that allows you to control whether the application will be load balanced by [Traefik](https://traefik.github.io) in a Mantl cluster. Here is an example `mantl.json` with no other settings other than the load balancing configuration:
+
+```json
+{
+  "mantl": {
+    "load-balancer": "external|off"
+  }
+}
+```
+
+If `mantl.load-balancer` is set to "external", the application will be included in the Traefik load balancer. Any other value will disable load balancing.
 
 #### marathon.json
 
