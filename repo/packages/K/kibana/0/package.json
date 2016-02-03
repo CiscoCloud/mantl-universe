@@ -1,0 +1,18 @@
+{
+  "name": "kibana",
+  "version": "4.1.2",
+  "tags": ["mantl", "mesos", "framework", "kibana", "elk"],
+  "framework": false,
+  "maintainer": "corebug@corebug.net",
+  "description": "Mesos implementation of dockered Kibana",
+  "scm": "https://github.com/mesos/elasticsearch.git",
+  "website": "https://github.com/mesos/elasticsearch",
+  "preInstallNotes":"Please note that Kibana package expects es-proxy running.",
+  "postInstallNotes": "Kibana is staging. Check Marathon and the ES management front-end for status.",
+  "licenses": [
+    {
+      "name": "Apache License Version 2.0",
+      "url": "https://github.com/elastic/kibana/blob/master/LICENSE.md"
+    }
+  ]
+}

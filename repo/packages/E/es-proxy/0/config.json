@@ -1,0 +1,29 @@
+{
+  "es-proxy": {
+    "image": {
+      "default": "ciscocloud/haproxy-consul",
+      "description": "haproxy-consul Docker image name",
+      "type": "string"
+    },
+    "version": {
+      "default": "latest",
+      "description": "haproxy-consul Docker image tag",
+      "type": "string"
+    },
+    "es_executor_name": {
+      "default": "elasticsearch-executor",
+      "description": "URL for ElasticSearch HTTP endpoint",
+      "type": "string"
+    },
+    "mem": {
+      "default": 512,
+      "description": "es-proxy memory",
+      "type": "int"
+    },
+    "cpu": {
+      "default": 0.3,
+      "description": "es-proxy CPU cores count",
+      "type": "number"
+    }
+  }
+}

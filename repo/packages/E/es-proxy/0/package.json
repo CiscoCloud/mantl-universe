@@ -1,0 +1,23 @@
+{
+  "name": "es-proxy",
+  "version": "0.2",
+  "tags": ["mantl", "mesos", "framework", "elasticsearch", "elastic", "proxy"],
+  "framework": false,
+  "maintainer": "corebug@corebug.net",
+  "description": "ElasticSearch-specific haproxy-consul package",
+  "scm": "https://github.com/CiscoCloud/haproxy-consul.git",
+  "website": "https://github.com/CiscoCloud/haproxy-consul",
+  "images": {
+    "icon-large": "https://www.elastic.co/static/img/logo-elastic.png",
+    "icon-medium": "https://www.elastic.co/static/img/logo-elastic.png",
+    "icon-small": "https://www.elastic.co/static/img/logo-elastic.png"
+  },
+  "preInstallNotes":"es-proxy is a generalized endpoint for ElasticSearch HTTP API load-balancing.",
+  "postInstallNotes": "es-proxy is staging. Check Marathon and the ES management front-end for status.",
+  "licenses": [
+    {
+      "name": "Apache License Version 2.0",
+      "url": "https://github.com/CiscoCloud/haproxy-consul/blob/master/LICENSE"
+    }
+  ]
+}

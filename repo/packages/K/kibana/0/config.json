@@ -1,0 +1,29 @@
+{
+  "kibana": {
+    "image": {
+      "default": "kibana",
+      "description": "Kibana Docker image name",
+      "type": "string"
+    },
+    "version": {
+      "default": "4.1.2",
+      "description": "Kibana Docker image tag",
+      "type": "string"
+    },
+    "es_url": {
+      "default": "http://es-proxy.service.consul:9200",
+      "description": "URL for ElasticSearch HTTP endpoint",
+      "type": "string"
+    },
+    "mem": {
+      "default": 128,
+      "description": "Kibana memory",
+      "type": "int"
+    },
+    "cpu": {
+      "default": 0.1,
+      "description": "Kibana CPU cores count",
+      "type": "number"
+    }
+  }
+}

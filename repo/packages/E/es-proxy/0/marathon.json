@@ -1,0 +1,38 @@
+{
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "{{ es-proxy.image }}:{{ es-proxy.version }}",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 9200,
+          "hostPort": 9200,
+          "protocol": "tcp"
+        },
+        {
+          "containerPort": 9300,
+          "hostPort": 9300,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "env": {
+    "ELASTICSEARCH_EXECUTOR_NAME": "{{ es-proxy.es_executor_name }}"
+  },
+  "healthChecks": [{
+    "protocol": "HTTP",
+    "path": "/",
+    "portIndex": 0
+  }],
+  "id": "es-proxy",
+  "instances": 1,
+  "cpus": {{ es-proxy.cpu }},
+  "mem": {{ es-proxy.mem }},
+  "ports": [
+    9200,
+    9300
+  ]
+}
+
