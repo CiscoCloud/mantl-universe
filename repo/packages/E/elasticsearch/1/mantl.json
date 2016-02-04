@@ -1,0 +1,13 @@
+{
+  "mesos": {
+    "master": "zk://zookeeper.service.consul:2181/mesos"
+  },
+  "elasticsearch": {
+    "executor": {
+      "cluster-name": "mantl"
+    }
+  },
+  "mantl": {
+    "load-balancer": "external"
+  }
+}
