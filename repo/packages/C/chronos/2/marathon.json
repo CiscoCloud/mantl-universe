@@ -25,11 +25,15 @@
     }{{#mantl.mesos.authentication-enabled}},
     "volumes": [
       {
-        "containerPath": "/etc/mesos/{{mantl.mesos.principal}}",
-        "hostPath": "/etc/mesos/{{mantl.mesos.principal}}",
+        "containerPath": "{{mantl.mesos.secret-path}}",
+        "hostPath": "{{mantl.mesos.secret-path}}",
         "mode": "RO"
       }
     ]{{/mantl.mesos.authentication-enabled}}
+  },
+  "labels": {
+    "check_http": "http://{host}:{port}",
+    "check_interval": "30s"
   },
   "healthChecks": [
     {
