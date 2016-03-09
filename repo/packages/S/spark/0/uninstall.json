@@ -1,1 +1,10 @@
-{}
+{
+  "zookeeper": {
+    "delete": [
+      {
+        "path": "{{spark.framework-name}}",
+        "always": true
+      }
+    ]
+  }
+}
