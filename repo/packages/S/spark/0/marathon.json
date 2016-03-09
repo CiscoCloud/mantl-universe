@@ -32,6 +32,7 @@
     ],
     "labels": {
         "SPARK_URI": "{{spark.uri}}",
+	"traefik.enable": "true",
 	"traefik.portIndex": "1"
     }
 }
