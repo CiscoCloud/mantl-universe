@@ -15,7 +15,7 @@
     "container": {
         "type": "DOCKER",
         "docker": {
-            "image": "{{resource.assets.container.docker.51cd5bc16406}}",
+            "image": "mesosphere/spark",
             "network": "HOST"
         }
     },
@@ -35,3 +35,4 @@
         "SPARK_URI": "{{spark.uri}}"
     }
 }
+
