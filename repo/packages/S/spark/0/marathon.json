@@ -31,7 +31,6 @@
         }
     ],
     "labels": {
-        {{#hdfs.config-url}}"SPARK_HDFS_CONFIG_URL": "{{hdfs.config-url}}",{{/hdfs.config-url}}
         "SPARK_URI": "{{spark.uri}}"
     }
 }

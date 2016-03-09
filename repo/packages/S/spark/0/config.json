@@ -71,16 +71,6 @@
                 "zookeeper",
                 "uri"
             ]
-        },
-        "hdfs": {
-            "description": "Spark-HDFS configuration properties",
-            "type": "object",
-            "properties": {
-                "config-url": {
-                    "type": "string",
-                    "description": "Base URL that serves HDFS config files (hdfs-site.xml, core-site.xml).  If not set, DCOS Spark will use its default configuration and read from DCOS HDFS."
-                }
-            }
         }
     },
     "required": [
@@ -88,3 +78,4 @@
         "spark"
     ]
 }
+
