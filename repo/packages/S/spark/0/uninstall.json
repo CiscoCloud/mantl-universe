@@ -2,7 +2,7 @@
   "zookeeper": {
     "delete": [
       {
-        "path": "{{spark.framework-name}}",
+        "path": "spark_mesos_dispatcher",
         "always": true
       }
     ]
