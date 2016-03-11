@@ -1,0 +1,10 @@
+{
+  "zookeeper": {
+    "delete": [
+      {
+        "path": "/spark_mesos_dispatcher",
+        "always": true
+      }
+    ]
+  }
+}
