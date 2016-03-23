@@ -1,0 +1,16 @@
+{
+  "name": "elasticsearch-client",
+  "version": "2.1.1",
+  "tags": ["mantl", "elasticsearch", "elastic"],
+  "framework": false,
+  "maintainer": "ryanesc@gmail.com",
+  "description": "An Elasticsearch client node for a specific Elasticsearch service and cluster name.",
+  "scm": "https://github.com/CiscoCloud/mantl-elk",
+  "website": "https://github.com/CiscoCloud/mantl-elk",
+  "licenses": [
+    {
+      "name": "Apache License Version 2.0",
+      "url": "https://raw.githubusercontent.com/CiscoCloud/mantl-elk/master/LICENSE"
+    }
+  ]
+}
