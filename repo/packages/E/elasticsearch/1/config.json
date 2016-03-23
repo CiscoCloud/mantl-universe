@@ -1,0 +1,202 @@
+{
+  "properties": {
+    "elasticsearch": {
+      "depscription": "Elasticsearch specific configuration properties",
+      "properties": {
+        "scheduler": {
+          "properties": {
+            "cpu": {
+              "default": 1.0,
+              "description": "The amount of CPU that Mesos shall allocate to the scheduler.",
+              "type": "number"
+            },
+            "ram": {
+              "default": 512,
+              "description": "The amount of RAM that Mesos shall allocate to the scheduler.",
+              "type": "integer"
+            },
+            "image": {
+              "default": "mesos/elasticsearch-scheduler:1.0.0",
+              "description": "The docker scheduler image to use.",
+              "type": "string"
+            },
+            "instances": {
+              "default": 1,
+              "description": "The number of scheduler instances.",
+              "type": "integer"
+            },
+            "java-heap": {
+              "default": "-Xms128m -Xmx256m",
+              "description": "The java heap space environmental variables to pass to the scheduler",
+              "type": "string"
+            },
+            "java-home": {
+              "default": "",
+              "description": "When starting in jar mode, if java is not on the path, you can specify the path here. [JAR MODE ONLY].",
+              "type": "string"
+            },
+            "use-ip-address": {
+              "default": false,
+              "description": "If true, the framework will resolve the local ip address. If false, it uses the hostname.",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "cpu",
+            "ram",
+            "image",
+            "instances",
+            "java-heap",
+            "java-home",
+            "us-ip-address"
+          ],
+          "type": "object"
+        },
+        "executor": {
+          "properties": {
+            "data-directory": {
+              "default": "/var/lib/mesos/slave/elasticsearch",
+              "description": "The data directory used by Docker volumes in the executors.",
+              "type": "string"
+            },
+            "cluster-name": {
+              "default": "elasticsearch",
+              "description": "Name of the elasticsearch cluster",
+              "type": "string"
+            },
+            "image": {
+              "default": "elasticsearch:latest",
+              "description": "The docker executor image to use.",
+              "type": "string"
+            },
+            "cpu": {
+              "default": 1.0,
+              "description": "The amount of CPU resource to allocate to the elasticsearch instance.",
+              "type": "number"
+            },
+            "disk": {
+              "default": 1024,
+              "description": "The amount of Disk resource to allocate to the elasticsearch instance (MB).",
+              "type": "number"
+            },
+            "ram": {
+              "default": 2048,
+              "description": "The amount of ram that Mesos shall give give to the executors.",
+              "type": "integer"
+            },
+            "instances": {
+              "default": 3,
+              "description": "The number of elasticsearch nodes to be instantiated. It is recommended that you provide an odd number, to prevent split brain issues.",
+              "type": "integer"
+            },
+            "settings-location": {
+              "default": "",
+              "description": "Path or URL to ES yml settings file. Path example: '/var/lib/mesos/config/elasticsearch.yml'. URL example: 'https://gist.githubusercontent.com/mmaloney/5e1da5daa58b70a3a671/raw/elasticsearch.yml'. In Docker mode a volume will be created from /tmp/config in the container to the directory that contains elasticsearch.yml.",
+              "type": "string"
+            },
+            "force-pull-image": {
+              "default": false,
+              "description": "Option to force pull the executor image. [DOCKER MODE ONLY].",
+              "type": "boolean"
+            },
+            "name": {
+              "default": "elasticsearch-executor",
+              "description": "The name given to the executor task.",
+              "type": "string"
+            },
+            "external-volume-driver": {
+              "default": "",
+              "description": "This defines the use of an external storage driver to be used. By default, elasticsearch nodes will not be created with external volumes but rather direct attached storage.",
+              "type": "string"
+            },
+            "external-volume-options": {
+              "default": "",
+              "description": "This describes how volumes are to be created.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "data-directory",
+            "cluster-name",
+            "image",
+            "cpu",
+            "disk",
+            "ram",
+            "instances",
+            "settings-location",
+            "force-pull-image",
+            "name",
+            "external-volume-driver",
+            "external-volume-options"
+          ],
+          "type": "object"
+        },
+        "failover-timeout": {
+          "default": "2592000.0",
+          "description": "The time before Mesos kills a scheduler and tasks if it has not recovered (ms).",
+          "type": "string"
+        },
+        "force-pull-image": {
+          "default": false,
+          "description": "Forces docker to re-pull the image.",
+          "type": "boolean"
+        },
+        "framework-name": {
+          "default": "elasticsearch",
+          "description": "The framework name.",
+          "type": "string"
+        },
+        "framework-role": {
+          "default": "*",
+          "description": "Used to group frameworks for allocation decisions, depending on the allocation policy being used.",
+          "type": "string"
+        },
+        "framework-use-docker": {
+          "default": true,
+          "description": "The framework will use docker if true, or jar files if false. If false, the user must ensure that the scheduler jar is available to all slaves.",
+          "type": "boolean"
+        },
+        "port": {
+          "default": 31105,
+          "description": "The port number of the ES-Mesos management front-end. Defaults to 8080.",
+          "type": "integer"
+        },
+        "zookeeper-mesos-timeout": {
+          "default": "20000",
+          "description": "The timeout for connecting to zookeeper for Mesos (ms).",
+          "type": "string"
+        }
+      },
+      "required": [
+        "failover-timeout",
+        "force-pull-image",
+        "framework-name",
+        "framework-role",
+        "framework-use-docker",
+        "port",
+        "zookeeper-mesos-timeout",
+        "executor",
+        "scheduler"
+      ],
+      "type": "object"
+    },
+    "mesos": {
+      "depscription": "Mesos specific configuration properties",
+      "properties": {
+        "master": {
+          "default": "zk://zookeeper.service.consul:2181/mesos",
+          "description": "The URL of the Mesos master. This should point to the Mesos ZNode on the Zookeeper machine.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "master"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "mesos",
+    "elasticsearch"
+  ]
+}
