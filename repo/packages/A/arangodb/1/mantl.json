@@ -9,6 +9,6 @@
     "secret": "{{mantl.mesos.secret}}"{{/mantl.mesos.authentication-enabled}}
   },
   "mantl": {
-    "load-balancer": "external"
+    "load-balancer": "off"
   }
 }

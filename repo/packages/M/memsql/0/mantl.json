@@ -13,6 +13,6 @@
     }
   },
   "mantl": {
-    "load-balancer": "external"
+    "load-balancer": "off"
   }
 }
