@@ -1,0 +1,42 @@
+{
+  "id": "{{kibana.id}}",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "{{kibana.image}}",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": {{kibana.container-port}},
+          "hostPort": 0
+        }
+      ],
+      "forcePullImage": {{kibana.force-pull-image}}
+    }
+  },
+  "instances": {{kibana.instances}},
+  "cpus": {{kibana.cpu}},
+  "mem": {{kibana.ram}},
+  "constraints": [["hostname", "UNIQUE"]],
+  "env": {
+    "ELASTICSEARCH_SERVICE": "{{kibana.elasticsearch-service}}",
+    "KIBANA_SERVICE": "{{kibana.id}}",
+    "CONSUL_SSL": "{{kibana.consul-ssl}}",
+    "CONSUL_SSL_VERIFY": "{{kibana.consul-ssl-verify}}"
+  },
+  "labels": {
+    "check_script": "if [[ \"$(curl --silent --insecure --retry 2 --connect-timeout 5 --max-time 5 http://{host}:{port}/api/status | jq -r .status.overall.state)\" != \"green\" ]]; then echo Kibana is not healthy.; exit 1; fi;",
+    "check_interval": "30s"
+  },
+  "healthChecks": [
+    {
+      "protocol": "HTTP",
+      "path": "/",
+      "gracePeriodSeconds": 30,
+      "intervalSeconds": 30,
+      "portIndex": 0,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 0
+    }
+  ]
+}

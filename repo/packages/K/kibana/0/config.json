@@ -1,0 +1,73 @@
+{
+  "properties": {
+    "kibana": {
+      "description": "Kibana specific configuration properties",
+      "properties": {
+        "id": {
+          "default": "kibana",
+          "description": "The Kibana instance Marathon id.",
+          "type": "string"
+        },
+        "container-port": {
+          "default": 5601,
+          "description": "The port number of the Kibana front-end. Defaults to 5601.",
+          "type": "integer"
+        },
+        "image": {
+          "default": "kibana:4.3.2",
+          "description": "The docker executor image to use.",
+          "type": "string"
+        },
+        "force-pull-image": {
+          "default": false,
+          "description": "Forces docker to re-pull the image.",
+          "type": "boolean"
+        },
+        "instances": {
+          "default": 1,
+          "description": "The number of Kibana instances to be instantiated.",
+          "type": "integer"
+        },
+        "cpu": {
+          "default": 0.5,
+          "description": "The amount of CPU resources to allocate to the Kibana instance.",
+          "type": "number"
+        },
+        "ram": {
+          "default": 512,
+          "description": "The amount of memory to allocate to each Kibana instance.",
+          "type": "integer"
+        },
+        "elasticsearch-service": {
+          "default": "elasticsearch-client",
+          "description": "The name of an Elasticsearch service in Consul. Kibana will connect to the first address and port available for this service.",
+          "type": "string"
+        },
+        "consul-ssl": {
+          "default": true,
+          "description": "Connect to Consul using SSL. Useful if you are using a custom docker image with a configuration derived from Consul.",
+          "type": "boolean"
+        },
+        "consul-ssl-verify": {
+          "default": false,
+          "description": "Whether or not to verify the Consul certificates. Useful if you are using a custom docker image with a configuration derived from Consul.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "container-port",
+        "image",
+        "force-pull-image",
+        "instances",
+        "cpu",
+        "ram",
+        "elasticsearch-service"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "kibana"
+  ]
+}
