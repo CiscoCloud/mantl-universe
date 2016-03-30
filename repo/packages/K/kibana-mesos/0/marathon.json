@@ -1,0 +1,68 @@
+{
+  "id": "{{kibana-mesos.id}}",
+  "cpus": {{kibana-mesos.scheduler.cpu}},
+  "mem": {{kibana-mesos.scheduler.ram}},
+  "instances": 1,
+  "args": [
+    "--spring.application.name={{kibana-mesos.framework-name}}",
+    "--mesos.framework.name={{kibana-mesos.framework-name}}",
+    "--mesos.master={{mesos.master}}",
+    "--mesos.zookeeper.server={{mesos.zk}}",
+    {{#mantl.mesos.authentication-enabled}}
+    "--mesos.principal={{mantl.mesos.principal}}",
+    "--mesos.secret={{mantl.mesos.secret}}",
+    {{/mantl.mesos.authentication-enabled}}
+    "--mesos.resources.cpus={{kibana-mesos.executor.cpu}}",
+    "--mesos.resources.mem={{kibana-mesos.executor.ram}}",
+    "--mesos.resources.count={{kibana-mesos.executor.instances}}",
+    "--mesos.resources.ports.UI_5601.host={{kibana-mesos.executor.host}}",
+    "--mesos.resources.ports.UI_5601.container={{kibana-mesos.executor.container-port}}",
+    "--mesos.docker.image={{kibana-mesos.executor.image}}",
+    "--mesos.docker.network={{kibana-mesos.executor.network}}",
+    {{#kibana-mesos.executor.command}}
+    "--mesos.command={{kibana-mesos.executor.command}}",
+    {{/kibana-mesos.executor.command}}
+    {{#kibana-mesos.executor.uri}}
+    "--mesos.uri[0..]={{kibana-mesos.executor.uri}}",
+    {{/kibana-mesos.executor.uri}}
+    "--logging.level.com.containersolutions.mesos={{kibana-mesos.log-level}}",
+    {{#kibana-mesos.health-check-command}}
+    "--mesos.healthCheck.command={{kibana-mesos.health-check-command}}",
+    {{/kibana-mesos.health-check-command}}
+    {{#kibana-mesos.elasticsearch-http}}
+    "--elasticsearch.http={{kibana-mesos.elasticsearch-http}}",
+    {{/kibana-mesos.elasticsearch-http}}
+    "--server.port={{kibana-mesos.scheduler.port}}"
+  ],
+  "env": {
+    "JAVA_OPTS": "-Xms32m -Xmx128m"
+  },
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "{{kibana-mesos.scheduler.image}}",
+      "forcePullImage": {{kibana-mesos.force-pull-image}},
+      "network": "HOST"
+    }
+  },{{#kibana-mesos.scheduler.uris}}
+  "uris": {{{kibana-mesos.scheduler.uris}}},{{/kibana-mesos.scheduler.uris}}
+  "ports": [
+    {{kibana-mesos.scheduler.port}}
+  ],
+  "requirePorts": true,
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 120,
+      "intervalSeconds": 30,
+      "maxConsecutiveFailures": 0,
+      "path": "/health",
+      "portIndex": 0,
+      "protocol": "HTTP",
+      "timeoutSeconds": 5
+    }
+  ],
+  "labels": {
+    "check_script": "if [[ \"$(curl --silent --insecure --retry 2 --connect-timeout 5 --max-time 5 http://{host}:{port}/health | jq -r .status)\" != \"UP\" ]]; then echo The Kibana framework is not healthy.; exit 1; fi;",
+    "check_interval": "30s"
+  }
+}

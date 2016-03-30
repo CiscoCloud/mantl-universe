@@ -1,0 +1,160 @@
+{
+  "properties": {
+    "kibana-mesos": {
+      "description": "Kibana specific configuration properties",
+      "properties": {
+        "scheduler": {
+          "properties": {
+            "image": {
+              "default": "containersol/mesosframework:0.1.0",
+              "description": "The Kibana Docker image to use.",
+              "type": "string"
+            },
+            "cpu": {
+              "default": 0.2,
+              "description": "The amount of CPU resources to allocate to the Kibana Mesos framework.",
+              "type": "number"
+            },
+            "ram": {
+              "default": 256,
+              "description": "The amount of memory to allocate to the Kibana Mesos framework.",
+              "type": "integer"
+            },
+            "port": {
+              "default": 31100,
+              "description": "The port for the scheduler health and metrics endpoint.",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "cpu",
+            "ram",
+            "port"
+          ],
+          "type": "object"
+        },
+        "executor": {
+          "properties": {
+            "cpu": {
+              "default": 0.5,
+              "description": "The amount of CPU resources to allocate to each Kibana instance.",
+              "type": "number"
+            },
+            "ram": {
+              "default": 512,
+              "description": "The amount of memory to allocate to each Kibana instance.",
+              "type": "integer"
+            },
+            "instances": {
+              "default": 1,
+              "description": "The number of Kibana instances to be instantiated.",
+              "type": "integer"
+            },
+            "host": {
+              "default": "ANY",
+              "description": "The type of port to allocate (ANY, UNPRIVILEGED, PRIVILEGED, 1234).",
+              "type": "string"
+            },
+            "container-port": {
+              "default": 5601,
+              "description": "The port number of the Kibana front-end. Defaults to 5601.",
+              "type": "integer"
+            },
+            "image": {
+              "default": "kibana:4.3.2",
+              "description": "The Kibana Docker image to use.",
+              "type": "string"
+            },
+            "network": {
+              "default": "BRIDGE",
+              "description": "The type of docker network to use.",
+              "type": "string"
+            },
+            "command": {
+              "default": "kibana --elasticsearch ${elasticsearch.http}",
+              "description": "The command to run.",
+              "type": "string"
+            },
+            "uri": {
+              "description": "A uri to a resource to download into the Mesos sandbox.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "cpu",
+            "ram",
+            "instances",
+            "host",
+            "container-port",
+            "image",
+            "network",
+            "command"
+          ],
+          "type": "object"
+        },
+        "id": {
+          "default": "kibana",
+          "description": "The Kibana instance Marathon id.",
+          "type": "string"
+        },
+        "framework-name": {
+          "default": "kibana-mesos",
+          "description": "The Mesos framework name.",
+          "type": "string"
+        },
+        "log-level": {
+          "default": "WARN",
+          "description": "The Kibana Mesos framework logging level.",
+          "type": "string"
+        },
+        "health-check-command": {
+          "description": "The command to run as the Mesos healthcheck.",
+          "type": "string"
+        },
+        "force-pull-image": {
+          "default": false,
+          "description": "Forces docker to re-pull the image.",
+          "type": "boolean"
+        },
+        "elasticsearch-http": {
+          "default": "http://elasticsearch-executor.service.consul:4000",
+          "description": "The url for the Elasticsearch server to connect to.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scheduler",
+        "executor",
+        "mesos",
+        "id",
+        "framework-name",
+        "log-level",
+        "force-pull-image"
+      ],
+      "type": "object"
+    },
+    "mesos": {
+      "depscription": "Mesos specific configuration properties",
+      "properties": {
+        "master": {
+          "default": "zk://zookeeper.service.consul:2181/mesos",
+          "description": "The URL of the Mesos master.",
+          "type": "string"
+        },
+        "zk": {
+          "default": "zookeeper.service.consul:2181",
+          "description": "The zookeeper host and port.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "master",
+        "zk"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "kibana"
+  ]
+}

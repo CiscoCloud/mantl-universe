@@ -1,0 +1,10 @@
+{
+  "zookeeper": {
+    "delete": [
+      {
+        "path": "/{{ kibana-mesos.framework-name }}",
+        "always": true
+      }
+    ]
+  }
+}
