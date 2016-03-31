@@ -8,6 +8,11 @@
           "description": "The Kibana instance Marathon id.",
           "type": "string"
         },
+        "service-name": {
+          "default": "kibana",
+          "description": "The name of the service that is registered in consul.",
+          "type": "string"
+        },
         "container-port": {
           "default": 5601,
           "description": "The port number of the Kibana front-end. Defaults to 5601.",

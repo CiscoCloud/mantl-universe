@@ -20,7 +20,7 @@
   "constraints": [["hostname", "UNIQUE"]],
   "env": {
     "ELASTICSEARCH_SERVICE": "{{kibana.elasticsearch-service}}",
-    "KIBANA_SERVICE": "{{kibana.id}}",
+    "KIBANA_SERVICE": "{{kibana.service-name}}",
     "CONSUL_SSL": "{{kibana.consul-ssl}}",
     "CONSUL_SSL_VERIFY": "{{kibana.consul-ssl-verify}}"
   },
