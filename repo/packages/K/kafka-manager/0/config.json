@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "properties": {
+    "kafka-manager": {
+      "description": "Kafka manager configuration",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "The Marathon application id.",
+          "type": "string",
+          "default": "kafka-manager"
+        },
+        "cpu": {
+          "description": "The amount of CPU to allocate to each kafka-manager instance.",
+          "type": "number",
+          "default": 0.2
+        },
+        "mem": {
+          "description": "The amount of memory to allocate to each kafka-manager instance.",
+          "type": "integer",
+          "default": 1024
+        },
+        "instances": {
+          "description": "The number of kafka-manager instances to launch.",
+          "type": "integer",
+          "default": 1
+        },
+        "host-port": {
+          "description": "The host port to bind to (0 for dynamic).",
+          "type": "integer",
+          "default": 0
+        },
+        "container-port": {
+          "description": "The container port to bind to.",
+          "type": "integer",
+          "default": 9000
+        },
+        "image": {
+          "description": "The kafka-manager docker image.",
+          "type": "string",
+          "default": "sheepkiller/kafka-manager:1.3.0.7"
+        },
+        "zk": {
+          "type": "string",
+          "description": "Zookeeper hosts connection string.",
+          "default": "zookeeper.service.consul:2181"
+        },
+        "app-secret": {
+          "type": "string",
+          "description": "Application secret",
+          "default": "letmein"
+        }
+      },
+      "required": ["id", "cpu", "mem", "instances", "host-port", "container-port", "image", "zk", "app-secret"]
+    }
+  }
+}

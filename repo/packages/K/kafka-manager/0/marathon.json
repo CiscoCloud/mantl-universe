@@ -1,0 +1,40 @@
+{
+  "id": "{{kafka-manager.id}}",
+  "instances": {{kafka-manager.instances}},
+  "cpus": {{kafka-manager.cpu}},
+  "mem":  {{kafka-manager.mem}},
+  "ports": [ {{kafka-manager.host-port}} ],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "network": "BRIDGE",
+      "image": "{{kafka-manager.image}}",
+      "portMappings": [
+        {
+          "containerPort": {{kafka-manager.container-port}},
+          "hostPort": {{kafka-manager.host-port}},
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "labels": {
+    "check_http": "http://{host}:{port}",
+    "check_interval": "30s"
+  },
+  "healthChecks": [
+    {
+      "protocol": "HTTP",
+      "path": "/",
+      "gracePeriodSeconds": 120,
+      "intervalSeconds": 60,
+      "portIndex": 0,
+      "timeoutSeconds": 30,
+      "maxConsecutiveFailures": 3
+    }
+  ],
+  "env":{
+    "ZK_HOSTS": "{{kafka-manager.zk}}",
+    "APPLICATION_SECRET": "{{kafka-manager.app-secret}}"
+  }
+}
