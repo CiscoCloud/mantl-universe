@@ -1,0 +1,10 @@
+{
+  "zookeeper": {
+    "delete": [
+      {
+        "path": "{{kafka.storage}}",
+        "always": true
+      }
+    ]
+  }
+}
