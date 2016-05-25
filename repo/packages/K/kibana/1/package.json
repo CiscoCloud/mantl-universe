@@ -1,0 +1,23 @@
+{
+  "name": "kibana",
+  "version": "4.3.2-1",
+  "tags": ["mantl", "mesos", "kibana", "elasticsearch", "elk" ],
+  "framework": false,
+  "maintainer": "ryanesc@gmail.com",
+  "description": "Mantl implementation of Kibana",
+  "scm": "https://github.com/elastic/kibana.git",
+  "website": "https://www.elastic.co/products/kibana",
+  "images": {
+    "icon-large": "https://www.elastic.co/static/img/logo-elastic.png",
+    "icon-medium": "https://www.elastic.co/static/img/logo-elastic.png",
+    "icon-small": "https://www.elastic.co/static/img/logo-elastic.png"
+  },
+  "preInstallNotes":"The Kibana Mantl Service implementation is alpha and there may be bugs, incomplete features, incorrect documentation or other discrepancies.",
+  "postInstallNotes": "Kibana is staging. Check Marathon for status.",
+  "licenses": [
+    {
+      "name": "Apache License Version 2.0",
+      "url": "https://raw.githubusercontent.com/mesos/elasticsearch/master/LICENSE"
+    }
+  ]
+}
