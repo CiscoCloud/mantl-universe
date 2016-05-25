@@ -40,14 +40,19 @@
           "type": "string"
         },
         "cpu": {
-          "default": 0.5,
+          "default": 1.0,
           "description": "The amount of CPU resource to allocate to the client node.",
           "type": "number"
         },
         "ram": {
-          "default": 512,
+          "default": 1024,
           "description": "The amount of ram that Mesos will give to the client node.",
           "type": "integer"
+        },
+        "java-opts": {
+          "default": "-Xms128m -Xmx256m",
+          "description": "The java heap space environmental variables to pass to the scheduler",
+          "type": "string"
         },
         "instances": {
           "default": 1,
@@ -80,6 +85,7 @@
         "force-pull-image",
         "ram",
         "cpu",
+        "java-opts",
         "instances",
         "consul-ssl",
         "consul-ssl-verify"

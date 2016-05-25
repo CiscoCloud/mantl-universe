@@ -24,6 +24,7 @@
   "mem": {{elasticsearch-client.ram}},
   "constraints": [["hostname", "UNIQUE"]],
   "env": {
+    "JAVA_OPTS": "{{elasticsearch-client.java-opts}}",
     "ELASTICSEARCH_CLUSTER_NAME": "{{elasticsearch-client.cluster-name}}",
     "ELASTICSEARCH_SERVICE": "{{elasticsearch-client.elasticsearch-service}}"{{#elasticsearch-client.consul-ssl}},
     "CONSUL_SSL": "{{elasticsearch-client.consul-ssl}}",
