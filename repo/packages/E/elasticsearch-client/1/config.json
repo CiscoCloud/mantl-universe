@@ -1,0 +1,99 @@
+{
+  "properties": {
+    "elasticsearch-client": {
+      "properties": {
+        "id": {
+          "default": "elasticsearch-client",
+          "description": "The Elasticsearch client node instance Marathon id.",
+          "type": "string"
+        },
+        "args": {
+          "default": [
+            "elasticsearch"
+          ],
+          "description": "The arguments to pass to the container.",
+          "type": "array"
+        },
+        "image": {
+          "default": "ciscocloud/mantl-elasticsearch-client:2.1.1",
+          "description": "The docker executor image to use.",
+          "type": "string"
+        },
+        "force-pull-image": {
+          "default": false,
+          "description": "Forces docker to re-pull the image.",
+          "type": "boolean"
+        },
+        "client-port": {
+          "default": 0,
+          "description": "The Elasticsearch client port. Defaults to a dynamic port.",
+          "type": "integer"
+        },
+        "transport-port": {
+          "default": 0,
+          "description": "The Elasticsearch transport port. Defaults to a dynamic port.",
+          "type": "integer"
+        },
+        "cluster-name": {
+          "default": "elasticsearch",
+          "description": "The name of the Elasticsearch cluster this client node will talk to.",
+          "type": "string"
+        },
+        "cpu": {
+          "default": 1.0,
+          "description": "The amount of CPU resource to allocate to the client node.",
+          "type": "number"
+        },
+        "ram": {
+          "default": 1024,
+          "description": "The amount of ram that Mesos will give to the client node.",
+          "type": "integer"
+        },
+        "java-opts": {
+          "default": "-Xms128m -Xmx256m",
+          "description": "The java heap space environmental variables to pass to the scheduler",
+          "type": "string"
+        },
+        "instances": {
+          "default": 1,
+          "description": "The number of Elasticsearch client nodes to be instantiated.",
+          "type": "integer"
+        },
+        "elasticsearch-service": {
+          "default": "transport_port.elasticsearch-executor",
+          "description": "The name of the Consul service for the Elasticsearch cluster nodes.",
+          "type": "string"
+        },
+        "consul-ssl": {
+          "default": true,
+          "description": "Connect to Consul using SSL.",
+          "type": "boolean"
+        },
+        "consul-ssl-verify": {
+          "default": false,
+          "description": "Whether or not to verify the Consul certificates.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "args",
+        "cluster-name",
+        "service",
+        "client-port",
+        "transport-port",
+        "image",
+        "force-pull-image",
+        "ram",
+        "cpu",
+        "java-opts",
+        "instances",
+        "consul-ssl",
+        "consul-ssl-verify"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "elasticsearch"
+  ]
+}

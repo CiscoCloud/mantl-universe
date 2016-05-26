@@ -1,0 +1,45 @@
+{
+  "id": "{{elasticsearch-client.id}}",
+  "args": {{{elasticsearch-client.args}}},
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "{{elasticsearch-client.image}}",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 9200,
+          "hostPort": {{elasticsearch-client.client-port}}
+        },
+        {
+          "containerPort": 9300,
+          "hostPort": {{elasticsearch-client.transport-port}}
+        }
+      ],
+      "forcePullImage": {{elasticsearch-client.force-pull-image}}
+    }
+  },
+  "instances": {{elasticsearch-client.instances}},
+  "cpus": {{elasticsearch-client.cpu}},
+  "mem": {{elasticsearch-client.ram}},
+  "constraints": [["hostname", "UNIQUE"]],
+  "env": {
+    "JAVA_OPTS": "{{elasticsearch-client.java-opts}}",
+    "ELASTICSEARCH_CLUSTER_NAME": "{{elasticsearch-client.cluster-name}}",
+    "ELASTICSEARCH_SERVICE": "{{elasticsearch-client.elasticsearch-service}}"{{#elasticsearch-client.consul-ssl}},
+    "CONSUL_SSL": "{{elasticsearch-client.consul-ssl}}",
+    "CONSUL_SSL_VERIFY": "{{elasticsearch-client.consul-ssl-verify}}"
+{{/elasticsearch-client.consul-ssl}}
+  },
+  "healthChecks": [
+    {
+      "protocol": "HTTP",
+      "path": "/_cluster/health",
+      "gracePeriodSeconds": 30,
+      "intervalSeconds": 30,
+      "portIndex": 0,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 5
+    }
+  ]
+}
