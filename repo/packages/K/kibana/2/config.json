@@ -48,6 +48,11 @@
           "description": "The name of an Elasticsearch service in Consul. Kibana will connect to the first address and port available for this service.",
           "type": "string"
         },
+        "logstash-config": {
+          "default": false,
+          "description": "Whether or not to configurae Kibana for a typical ELK configuration. Useful if you are using a custom docker image.",
+          "type": "boolean"
+        },
         "consul-ssl": {
           "default": true,
           "description": "Connect to Consul using SSL. Useful if you are using a custom docker image with a configuration derived from Consul.",

@@ -20,6 +20,7 @@
   "constraints": [["hostname", "UNIQUE"]],
   "env": {
     "ELASTICSEARCH_SERVICE": "{{kibana.elasticsearch-service}}",
+    "KIBANA_LOGSTASH_CONFIG": "{{kibana.logstash-config}}",
     "KIBANA_SERVICE": "{{kibana.service-name}}"{{#kibana.consul-ssl}},
     "CONSUL_SSL": "{{kibana.consul-ssl}}",
     "CONSUL_SSL_VERIFY": "{{kibana.consul-ssl-verify}}"
