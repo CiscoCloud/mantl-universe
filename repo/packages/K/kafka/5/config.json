@@ -24,6 +24,11 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "id": {
+              "type": "string",
+              "description": "The marathon app id for the framework scheduler",
+              "default": "kafka"
+            },
             "cpus": {
               "description": "cpu requirements",
               "type": "number",
@@ -89,6 +94,7 @@
           "description": "Mesos Framework Name",
           "default": "kafka"
         },
+
         "framework-role": {
           "type": "string",
           "description": "Mesos Framework Role",

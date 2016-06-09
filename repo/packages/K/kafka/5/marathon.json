@@ -1,5 +1,5 @@
 {
-  "id": "{{kafka.framework-name}}",
+  "id": "{{kafka.app.id}}",
   "cpus": {{kafka.app.cpus}},
   "mem": {{kafka.app.mem}},
   "instances": {{kafka.app.instances}},
