@@ -1,0 +1,66 @@
+{
+  "id": "{{elasticsearch.framework-name}}",
+  "cpus": {{elasticsearch.scheduler.cpu}},
+  "mem": {{elasticsearch.scheduler.ram}},
+  "instances": {{elasticsearch.scheduler.instances}},
+  "ports": [{{elasticsearch.port}}],
+  "requirePorts": true,
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 120,
+      "intervalSeconds": 30,
+      "maxConsecutiveFailures": 0,
+      "path": "/",
+      "portIndex": 0,
+      "protocol": "HTTP",
+      "timeoutSeconds": 5
+    }
+  ],
+  "labels": {
+    "check_script": "if [[ \"$(node=$(curl --silent --show-error --fail --retry 2 --connect-timeout 5 --max-time 5 http://{host}:{port}/v1/tasks/ | jq -r '.[0].http_address') && curl --silent --show-error --fail --retry 2 --connect-timeout 5 --max-time 5 http://$node/_cluster/health | jq -r .status)\" != \"green\" ]]; then echo The Elasticsearch cluster is not healthy.; exit 1; fi;",
+    "check_interval": "30s"
+  },
+  "args": [
+    "--dataDir", "{{elasticsearch.executor.data-directory}}",
+    "--elasticsearchClusterName", "{{elasticsearch.executor.cluster-name}}",
+    "--elasticsearchCpu", "{{elasticsearch.executor.cpu}}",
+    "--elasticsearchDisk", "{{elasticsearch.executor.disk}}",
+    "--elasticsearchRam", "{{elasticsearch.executor.ram}}",
+    "--elasticsearchDockerImage", "{{elasticsearch.executor.image}}",
+    "--elasticsearchNodes", "{{elasticsearch.executor.instances}}",{{#elasticsearch.executor.settings-location}}
+    "--elasticsearchSettingsLocation", "{{elasticsearch.executor.settings-location}}",{{/elasticsearch.executor.settings-location}}
+    "--executorForcePullImage", "{{elasticsearch.executor.force-pull-image}}",
+    "--executorName", "{{elasticsearch.executor.name}}",
+    "--externalVolumeDriver", "{{elasticsearch.executor.external-volume-driver}}",
+    "--externalVolumeOptions", "{{elasticsearch.executor.external-volume-options}}",
+    "--frameworkFailoverTimeout", "{{elasticsearch.failover-timeout}}",
+    "--frameworkName", "{{elasticsearch.framework-name}}",{{#mantl.mesos.authentication-enabled}}
+    "--frameworkPrincipal", "{{mantl.mesos.principal}}",
+    "--frameworkSecretPath", "/etc/mesos/{{mantl.mesos.principal}}",{{/mantl.mesos.authentication-enabled}}
+    "--frameworkRole", "{{elasticsearch.framework-role}}",
+    "--frameworkUseDocker", "{{elasticsearch.framework-use-docker}}",{{#elasticsearch.scheduler.java-home}}
+    "--javaHome", "{{elasticsearch.scheduler.java-home}}",{{/elasticsearch.scheduler.java-home}}
+    "--useIpAddress", "{{elasticsearch.scheduler.use-ip-address}}",
+    "--webUiPort", "{{elasticsearch.port}}",
+    "--zookeeperMesosTimeout", "{{elasticsearch.zookeeper-mesos-timeout}}",
+    "--zookeeperMesosUrl", "{{mesos.master}}"
+  ],
+  "env": {
+    "JAVA_OPTS": "{{elasticsearch.scheduler.java-heap}}"
+  },
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "{{elasticsearch.scheduler.image}}",
+      "network": "HOST",
+      "forcePullImage": {{elasticsearch.force-pull-image}}
+    }{{#mantl.mesos.authentication-enabled}},
+    "volumes": [
+      {
+        "containerPath": "/etc/mesos/{{mantl.mesos.principal}}",
+        "hostPath": "{{mantl.mesos.secret-path}}",
+        "mode": "RO"
+      }
+    ]{{/mantl.mesos.authentication-enabled}}
+  }
+}
