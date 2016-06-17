@@ -2,7 +2,7 @@
   "zookeeper": {
     "delete": [
       {
-        "path": "kafka-manager",
+        "path": "/kafka-manager",
         "always": true
       }
     ]
