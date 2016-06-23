@@ -40,6 +40,7 @@
     "--frameworkRole", "{{elasticsearch.framework-role}}",
     "--frameworkUseDocker", "{{elasticsearch.framework-use-docker}}",{{#elasticsearch.scheduler.java-home}}
     "--javaHome", "{{elasticsearch.scheduler.java-home}}",{{/elasticsearch.scheduler.java-home}}
+    "--elasticsearchBinaryUrl", "{{elasticsearch.executor.binary-url}}",
     "--useIpAddress", "{{elasticsearch.scheduler.use-ip-address}}",
     "--webUiPort", "{{elasticsearch.port}}",
     "--zookeeperMesosTimeout", "{{elasticsearch.zookeeper-mesos-timeout}}",

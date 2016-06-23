@@ -65,9 +65,13 @@
               "type": "string"
             },
             "image": {
-              "default": "elasticsearch:latest",
+              "default": "elasticsearch:2.3.3",
               "description": "The docker executor image to use.",
               "type": "string"
+            },
+            "binary-url": {
+              "default": "https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.3.3/elasticsearch-2.3.3.tar.gz",
+              "description": "The elasticsearch binary to use (Must be tar.gz format). [JAR MODE ONLY]"
             },
             "cpu": {
               "default": 1.0,
